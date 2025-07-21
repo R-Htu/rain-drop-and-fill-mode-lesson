@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Animation Fill Mode Lessons</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #f3f4f6;
+      padding: 2rem;
+    }
+    h1, h2 {
+      color: #1f2937;
+    }
+    .lesson {
+      margin-bottom: 3rem;
+      padding: 1rem;
+      background: #fff;
+      border-left: 6px solid #3b82f6;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .box {
+      width: 50px;
+      height: 50px;
+      margin-top: 1rem;
+      background-color: crimson;
+    }
+
+    @keyframes move {
+      to { transform: translateX(200px); }
+    }
+
+    @keyframes grow {
+      to { transform: scale(1.5); background-color: green; }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slideFade {
+      from { transform: translateX(-100px); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+
+    .none {
+      animation: move 1s linear;
+      animation-fill-mode: none;
+    }
+
+    .forwards {
+      animation: grow 1s ease-in-out forwards;
+    }
+
+    .backwards {
+      animation: fadeIn 2s ease 2s backwards;
+    }
+
+    .both {
+      animation: slideFade 2s ease 2s both;
+    }
+  </style>
+</head>
+<body>
+  <h1>🎨 CSS Animation Fill Modes</h1>
+  <p><strong>Definition:</strong> <code>animation-fill-mode</code> controls how an element looks before and after the animation.</p>
+
+  <div class="lesson">
+    <h2>Lesson 1: animation-fill-mode: <code>none</code></h2>
+    <p>The element returns to its original style after the animation ends.</p>
+    <div class="box none"></div>
+  </div>
+
+  <div class="lesson">
+    <h2>Lesson 2: animation-fill-mode: <code>forwards</code></h2>
+    <p>The element keeps the final style (end of animation).</p>
+    <div class="box forwards"></div>
+  </div>
+
+  <div class="lesson">
+    <h2>Lesson 3: animation-fill-mode: <code>backwards</code></h2>
+    <p>The element shows the first style during animation delay.</p>
+    <div class="box backwards"></div>
+  </div>
+
+  <div class="lesson">
+    <h2>Lesson 4: animation-fill-mode: <code>both</code></h2>
+    <p>The element applies the first style during delay and keeps the final style after.</p>
+    <div class="box both"></div>
+  </div>
+</body>
+</html> 
