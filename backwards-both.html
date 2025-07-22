@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Animation Fill Mode Demo</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: #f9fafb;
+    padding: 2rem;
+    display: flex;
+    gap: 3rem;
+  }
+  .container {
+    width: 150px;
+    text-align: center;
+  }
+  h2 {
+    font-weight: normal;
+    color: #333;
+  }
+  .box {
+    width: 50px;
+    height: 50px;
+    margin: 1rem auto;
+    background-color: crimson;
+    border-radius: 8px;
+  }
+
+  /* Animation: from small blue on left to big green on right */
+  @keyframes moveAndGrow {
+    0% {
+      transform: translateX(0) scale(1);
+      background-color: blue;
+    }
+    100% {
+      transform: translateX(100px) scale(1.5);
+      background-color: green;
+    }
+  }
+
+  /* Backwards example */
+  .backwards {
+    animation: moveAndGrow 3s ease 2s backwards;
+  }
+
+  /* Both example */
+  .both {
+    animation: moveAndGrow 3s ease 2s both;
+  }
+
+  /* Original box (no animation) */
+  .original {
+    background-color: gray;
+  }
+
+  /* Instructions */
+  p {
+    font-size: 0.9rem;
+    color: #555;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h2>Backwards</h2>
+  <p>During 2s wait, box shows first style (small blue)<br>
+     After animation, goes back to normal</p>
+  <div class="box backwards"></div>
+</div>
+
+<div class="container">
+  <h2>Both</h2>
+  <p>During 2s wait, box shows first style (small blue)<br>
+     After animation, keeps final style (big green)</p>
+  <div class="box both"></div>
+</div>
+
+<div class="container">
+  <h2>Original</h2>
+  <p>No animation, just gray box</p>
+  <div class="box original"></div>
+</div>
+
+</body>
+</html>

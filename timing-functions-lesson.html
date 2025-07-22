@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Timeout & Interval Lesson</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-r from-indigo-200 to-pink-100 min-h-screen flex items-center justify-center">
+
+  <div class="bg-white shadow-xl p-8 rounded-xl w-full max-w-md text-center space-y-6">
+    <h1 class="text-2xl font-bold text-indigo-700">⏳ Timeout & Interval Lesson</h1>
+
+    <div class="flex flex-wrap gap-3 justify-center">
+      <button onclick="startTimeout()" class="bg-indigo-500 text-white px-4 py-2 rounded hover:bg-indigo-600 transition">Start Timeout (3s)</button>
+      <button onclick="cancelTimeout()" class="bg-red-400 text-white px-4 py-2 rounded hover:bg-red-500 transition">Cancel Timeout</button>
+      <button onclick="startInterval()" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 transition">Start Counter</button>
+      <button onclick="stopInterval()" class="bg-yellow-400 text-white px-4 py-2 rounded hover:bg-yellow-500 transition">Stop Counter</button>
+      <button onclick="clearAll()" class="bg-gray-600 text-white px-4 py-2 rounded hover:bg-gray-700 transition">Clear Everything</button>
+    </div>
+
+    <p id="message" class="text-lg text-gray-700 min-h-[1.5rem]"></p>
+    
+    <div id="counter" class="text-5xl font-bold text-pink-600">0</div>
+  </div>
+
+  <script>
+    let timeoutId;
+    let intervalId;
+    const message = document.getElementById('message');
+    const counter = document.getElementById('counter');
+    let count = 0;
+
+    const startTimeout = () => {
+      message.textContent = 'Message will show in 3 seconds';
+      timeoutId = setTimeout(() => {
+        message.textContent = "✅ Timeout Completed!";
+      }, 3000);
+    }
+
+    const cancelTimeout = () => {
+      clearTimeout(timeoutId);
+      message.textContent = '❌ Timeout canceled.';
+    }
+
+    const startInterval = () => {
+      if (!intervalId) {
+        intervalId = setInterval(() => {
+          count++;
+          counter.textContent = count;
+        }, 1000);
+      }
+    }
+
+    const stopInterval = () => {
+      clearInterval(intervalId);
+      intervalId = null;
+    }
+
+    const clearAll = () => {
+      cancelTimeout();
+      stopInterval();
+      count = 0;
+      message.textContent = '🧹 All clear';
+      counter.textContent = count;
+    }
+  </script>
+
+</body>
+</html>

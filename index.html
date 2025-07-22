@@ -30,15 +30,29 @@
     }
   </style>
 </head>
-<body class="bg-black">
+<body class="bg-gradient-to-b from-gray-900 via-black to-gray-900 min-h-screen flex items-center justify-center text-white relative overflow-hidden">
 
-  <div id="rain" class="fixed inset-0 pointer-events-none z-50 overflow-hidden"></div>
+  <!-- Rain Effect -->
+  <div id="rain" class="fixed inset-0 pointer-events-none z-10"></div>
 
+  <!-- Content -->
+  <div class="relative z-20 text-center p-8 bg-black bg-opacity-50 backdrop-blur-md rounded-2xl shadow-xl max-w-lg w-full">
+    <h1 class="text-3xl font-bold text-blue-300 mb-6 drop-shadow">🌧️ Rain Animation Lesson</h1>
 
-  <a href="animation-fill-mode.html" target="_blank" class="text-red-300 underline block p-4">Animation Fill Mode Lesson</a>
+    <div class="flex flex-col gap-4">
+      <a href="animation-fill-mode.html" target="_blank" class="text-pink-300 underline hover:text-pink-500 transition duration-300 hover:scale-105">
+        ▶ Animation Fill Mode Lesson
+      </a>
+      <a href="backwards-both.html" target="_blank" class="text-yellow-300 underline hover:text-yellow-500 transition duration-300 hover:scale-105">
+        ▶ Backward and Both Mode Lesson
+      </a>
+      <a href="timing-functions-lesson.html" target="_blank" class="text-green-300 underline hover:text-green-500 transition duration-300 hover:scale-105">
+        ▶ Timing Functions Lesson
+      </a>
+    </div>
+  </div>
 
   <script>
-
     window.addEventListener('DOMContentLoaded', () => {
       const rainContainer = document.getElementById('rain');
 
@@ -51,12 +65,10 @@
         drop.style.animationDelay = (Math.random() * 2) + 's';
 
         rainContainer.appendChild(drop);
-
         drop.addEventListener('animationend', () => drop.remove());
       }
 
-
-      setInterval(createRaindrop, 100);
+      setInterval(createRaindrop, 30);
     });
   </script>
 </body>
