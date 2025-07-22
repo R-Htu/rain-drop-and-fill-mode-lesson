@@ -39,9 +39,10 @@
     function createRaindrop() {
       const drop = document.createElement('div');
       drop.classList.add('raindrop');
-      console.log(window.innerWidth);
+      //console.log(window.innerWidth);
       drop.style.position = "absolute";
       drop.style.left = Math.random() * window.innerWidth + 'px';
+      drop.style.top = "0px";
       drop.style.animationDuration = (Math.random() * 0.5 + 0.7) + 's';
       drop.style.animationDelay = (Math.random() * 2) + 's';
 
