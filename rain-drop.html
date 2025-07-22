@@ -31,27 +31,31 @@
 </style>
 </head>
 <body class="bg-black">
-  <div id="rain" class="fixed inset-0 pointer-events-none z-50 overflow-hidden"></div>
-    <a href="animation-fill-mode.html" class="text-red-300 underline block p-4">Animation Fill Mode Lesson</a>
+
+  <div id="rain" style="position: fixed; inset: 0; pointer-events: none; z-index: 9999; overflow: hidden;"></div>
+
+  <a href="animation-fill-mode.html" target="_blank" class="text-red-300 underline block p-4">Animation Fill Mode Lesson</a>
+  
   <script>
-    const rainContainer = document.getElementById('rain');
+    window.onload = () => {
+      const rainContainer = document.getElementById('rain');
 
-    function createRaindrop() {
-      const drop = document.createElement('div');
-      drop.classList.add('raindrop');
-      //console.log(window.innerWidth);
-      drop.style.position = "absolute";
-      drop.style.left = Math.random() * window.innerWidth + 'px';
-      drop.style.top = "0px";
-      drop.style.animationDuration = (Math.random() * 0.5 + 0.7) + 's';
-      drop.style.animationDelay = (Math.random() * 2) + 's';
+      function createRaindrop() {
+        const drop = document.createElement('div');
+        drop.classList.add('raindrop');
+        drop.style.position = "absolute";
+        drop.style.left = Math.random() * window.innerWidth + 'px';
+        drop.style.top = "0px";
+        drop.style.animationDuration = (Math.random() * 0.5 + 0.7) + 's';
+        drop.style.animationDelay = (Math.random() * 2) + 's';
 
-      rainContainer.appendChild(drop);
+        rainContainer.appendChild(drop);
+        drop.addEventListener('animationend', () => drop.remove());
+      }
 
-      drop.addEventListener('animationend', () => drop.remove());
-    }
+      setInterval(createRaindrop, 100);
+    };
+</script>
 
-    setInterval(createRaindrop, 100);
-  </script>
 </body>
 </html>
